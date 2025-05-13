@@ -1,0 +1,34 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:padding="16dp">
+
+    <EditText
+        android:id="@+id/valorInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Valor (R$)"
+        android:inputType="numberDecimal"/>
+
+    <EditText
+        android:id="@+id/descricaoInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Descrição"/>
+
+    <EditText
+        android:id="@+id/tipoInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Tipo (entrada/saída)"/>
+
+    <Button
+        android:id="@+id/adicionarButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Adicionar"/>
+
+    <ListView
+        android:id="@+id/listaTransacoes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+</LinearLayout>
