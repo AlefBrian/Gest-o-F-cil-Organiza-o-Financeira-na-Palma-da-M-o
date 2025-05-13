@@ -1,0 +1,41 @@
+package com.gestaofacil
+
+import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import android.widget.*
+
+class MainActivity : AppCompatActivity() {
+    private lateinit var valorInput: EditText
+    private lateinit var descricaoInput: EditText
+    private lateinit var tipoInput: EditText
+    private lateinit var adicionarButton: Button
+    private lateinit var listaTransacoes: ListView
+    private val transacoes = mutableListOf<String>()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        valorInput = findViewById(R.id.valorInput)
+        descricaoInput = findViewById(R.id.descricaoInput)
+        tipoInput = findViewById(R.id.tipoInput)
+        adicionarButton = findViewById(R.id.adicionarButton)
+        listaTransacoes = findViewById(R.id.listaTransacoes)
+
+        val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, transacoes)
+        listaTransacoes.adapter = adapter
+
+        adicionarButton.setOnClickListener {
+            val valor = valorInput.text.toString()
+            val descricao = descricaoInput.text.toString()
+            val tipo = tipoInput.text.toString()
+            if (valor.isNotEmpty() && descricao.isNotEmpty() && tipo.isNotEmpty()) {
+                transacoes.add("$tipo: R$ $valor - $descricao")
+                adapter.notifyDataSetChanged()
+                valorInput.text.clear()
+                descricaoInput.text.clear()
+                tipoInput.text.clear()
+            }
+        }
+    }
+}
